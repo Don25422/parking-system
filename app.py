@@ -401,5 +401,15 @@ def reset_all():
     lot.reset_database()
     return jsonify({"message": "System reset successfully"})
 
+import webbrowser
+import threading
+
+def open_browser():
+    webbrowser.open("http://127.0.0.1:5000")
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    print(" Click link if not redirected: http://127.0.0.1:5000")
+    
+    threading.Timer(1.2, open_browser).start()
+    
+    app.run(debug=True, host='127.0.0.1', port=5000, use_reloader=False)
